@@ -2378,7 +2378,7 @@ components:
             - busing
             - covenant_partner
             - other
-        method:
+        channel:
           type: string
           x-stoplight:
             id: y9bgb4hn1twf3
@@ -2394,6 +2394,7 @@ components:
             - pending
             - success
             - failed
+            - canceled
         description:
           type: string
           x-stoplight:
@@ -2410,7 +2411,7 @@ components:
         - currency
         - amount
         - type
-        - method
+        - channel
         - status
         - description
         - createdAt
@@ -2453,7 +2454,7 @@ components:
         idempotencyKey:
           type: string
           x-stoplight:
-            id: 2qdfup86p1dn0
+            id: m5ixbm809pxeu
         amount:
           type: integer
           x-stoplight:
@@ -2478,11 +2479,7 @@ components:
             - GHS
             - EUR
             - GBP
-        AccountNumber:
-          type: string
-          x-stoplight:
-            id: wgxsd8qm8vyrr
-        method:
+        channel:
           type: string
           x-stoplight:
             id: 85co46fj603ay
@@ -2494,8 +2491,7 @@ components:
         - amount
         - type
         - currency
-        - AccountNumber
-        - method
+        - channel
     UserRel:
       title: UserRel
       x-stoplight:
