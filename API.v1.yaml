@@ -2486,6 +2486,10 @@ components:
           enum:
             - mobile_money
             - card
+        description:
+          type: string
+          x-stoplight:
+            id: nno9uf7mtf8op
       required:
         - idempotencyKey
         - amount
