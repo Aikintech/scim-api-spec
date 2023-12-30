@@ -626,6 +626,14 @@ paths:
               - oldest
           in: query
           name: sort
+        - schema:
+            type: number
+          in: query
+          name: page
+        - schema:
+            type: number
+          in: query
+          name: limit
       description: 'Client: Get my prayers'
     post:
       summary: ''
