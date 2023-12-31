@@ -2634,6 +2634,10 @@ components:
             type: string
         role:
           type: string
+        createdAt:
+          type: string
+          x-stoplight:
+            id: kg0syalmfa3ky
       required:
         - id
         - firstName
@@ -2643,6 +2647,7 @@ components:
         - avatar
         - channels
         - role
+        - createdAt
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
