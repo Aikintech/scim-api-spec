@@ -1396,7 +1396,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UsersResponse'
+                $ref: '#/components/schemas/BackofficeUsersResponse'
       operationId: backoffice-get-users
       description: Get users
       security:
@@ -2590,14 +2590,16 @@ components:
         - id
         - displayName
         - module
-    UsersResponse:
+    BackofficeUsersResponse:
       type: object
+      x-stoplight:
+        id: 01c0b53486443
       x-examples: {}
       properties:
         items:
           type: array
           items:
-            $ref: '#/components/schemas/AuthUser'
+            $ref: '#/components/schemas/BackofficeUser'
         limit:
           type: integer
         page:
@@ -2609,7 +2611,38 @@ components:
         - limit
         - page
         - total
-      description: ''
+      title: ''
+    BackofficeUser:
+      type: object
+      x-examples: {}
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        emailVerified:
+          type: boolean
+        avatar:
+          type: string
+        channels:
+          type: array
+          items:
+            type: string
+        role:
+          type: string
+      required:
+        - id
+        - firstName
+        - lastName
+        - email
+        - emailVerified
+        - avatar
+        - channels
+        - role
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
