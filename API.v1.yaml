@@ -280,13 +280,13 @@ paths:
       description: 'Client: Get podcasts'
       parameters:
         - schema:
-            type: number
-          in: query
-          name: limit
-        - schema:
-            type: number
+            type: integer
           in: query
           name: page
+        - schema:
+            type: integer
+          in: query
+          name: limit
         - schema:
             type: string
           in: query
@@ -627,11 +627,11 @@ paths:
           in: query
           name: sort
         - schema:
-            type: number
+            type: integer
           in: query
           name: page
         - schema:
-            type: number
+            type: integer
           in: query
           name: limit
       description: 'Client: Get my prayers'
@@ -678,6 +678,14 @@ paths:
           in: query
           name: postType
           required: true
+        - schema:
+            type: integer
+          in: query
+          name: page
+        - schema:
+            type: integer
+          in: query
+          name: limit
   '/posts/{postId}':
     get:
       summary: ''
@@ -899,11 +907,11 @@ paths:
           name: filter
           required: true
         - schema:
-            type: number
+            type: integer
           in: query
           name: page
         - schema:
-            type: number
+            type: integer
           in: query
           name: limit
         - schema:
@@ -1162,11 +1170,11 @@ paths:
           name: postType
           required: true
         - schema:
-            type: number
+            type: integer
           in: query
           name: page
         - schema:
-            type: number
+            type: integer
           in: query
           name: limit
         - schema:
@@ -1271,11 +1279,11 @@ paths:
         - X-USER-TOKEN: []
       parameters:
         - schema:
-            type: number
+            type: integer
           in: query
           name: page
         - schema:
-            type: number
+            type: integer
           in: query
           name: limit
         - schema:
@@ -1342,11 +1350,11 @@ paths:
         - X-USER-TOKEN: []
       parameters:
         - schema:
-            type: number
+            type: integer
           in: query
           name: page
         - schema:
-            type: number
+            type: integer
           in: query
           name: limit
         - schema:
@@ -1379,6 +1387,36 @@ paths:
         name: transactionId
         in: path
         required: true
+  /backoffice/users:
+    get:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResponse'
+      operationId: backoffice-get-users
+      description: Get users
+      security:
+        - X-USER-TOKEN: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: page
+        - schema:
+            type: integer
+          in: query
+          name: limit
+        - schema:
+            type: string
+          in: query
+          name: search
+      tags:
+        - backoffice
+    parameters: []
 components:
   schemas:
     AuthUser:
@@ -1506,7 +1544,9 @@ components:
         createdAt:
           type: string
         podcasts:
-          $ref: '#/components/schemas/Podcast'
+          type: array
+          items:
+            $ref: '#/components/schemas/Podcast'
       required:
         - id
         - title
@@ -2550,6 +2590,26 @@ components:
         - id
         - displayName
         - module
+    UsersResponse:
+      type: object
+      x-examples: {}
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthUser'
+        limit:
+          type: integer
+        page:
+          type: integer
+        total:
+          type: integer
+      required:
+        - items
+        - limit
+        - page
+        - total
+      description: ''
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
