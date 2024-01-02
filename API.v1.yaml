@@ -1455,6 +1455,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Permission'
+        social:
+          type: boolean
+          x-stoplight:
+            id: rym4jvde8q35f
       required:
         - id
         - firstName
@@ -1465,6 +1469,7 @@ components:
         - avatarKey
         - channels
         - permissions
+        - social
     Podcast:
       type: object
       x-examples: {}
@@ -2638,6 +2643,10 @@ components:
           type: string
           x-stoplight:
             id: kg0syalmfa3ky
+        social:
+          type: boolean
+          x-stoplight:
+            id: 0umn5ns6kfsbg
       required:
         - id
         - firstName
@@ -2648,6 +2657,7 @@ components:
         - channels
         - role
         - createdAt
+        - social
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
