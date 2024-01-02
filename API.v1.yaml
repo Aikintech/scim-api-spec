@@ -865,6 +865,39 @@ paths:
         name: eventId
         in: path
         required: true
+    patch:
+      summary: ''
+      operationId: sync-event-to-calendar
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      tags:
+        - client
+      description: Sync event to calendar (add or remove)
+      security:
+        - X-USER-TOKEN: []
+  /events/my-calendar-events:
+    get:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MyCalendarEventsResponse'
+      operationId: get-user-calendar-events
+      description: Get user calendar events
+      parameters: []
+      tags:
+        - client
+      security:
+        - X-USER-TOKEN: []
+    parameters: []
   /home:
     get:
       summary: ''
@@ -1624,6 +1657,12 @@ components:
           type: boolean
         createdAt:
           type: string
+        users:
+          type: array
+          x-stoplight:
+            id: 3b4qrixcfrrvz
+          items:
+            $ref: '#/components/schemas/UserRel'
       required:
         - id
         - title
@@ -2701,6 +2740,13 @@ components:
         - role
         - createdAt
         - social
+    MyCalendarEventsResponse:
+      title: MyCalendarEventsResponse
+      x-stoplight:
+        id: lc70349ssv1nz
+      type: array
+      items:
+        $ref: '#/components/schemas/Event'
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
