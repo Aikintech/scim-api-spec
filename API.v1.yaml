@@ -2658,6 +2658,49 @@ components:
         - role
         - createdAt
         - social
+    BackofficeUserFull:
+      type: object
+      x-stoplight:
+        id: 7pkrwx2qy1djv
+      x-examples: {}
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        emailVerified:
+          type: boolean
+        avatar:
+          type: string
+        channels:
+          type: array
+          items:
+            type: string
+        role:
+          type: string
+        createdAt:
+          type: string
+          x-stoplight:
+            id: kg0syalmfa3ky
+        social:
+          type: boolean
+          x-stoplight:
+            id: 0umn5ns6kfsbg
+      required:
+        - id
+        - firstName
+        - lastName
+        - email
+        - emailVerified
+        - avatar
+        - channels
+        - role
+        - createdAt
+        - social
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
