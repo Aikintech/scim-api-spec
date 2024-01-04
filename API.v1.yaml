@@ -1027,8 +1027,6 @@ paths:
                 uploadType:
                   type: string
                   enum:
-                    - testimony
-                    - excerpt
                     - avatar
               required:
                 - file
@@ -1054,6 +1052,8 @@ paths:
                 $ref: '#/components/schemas/MessageResponse'
       operationId: delete-file
       description: Delete file
+      security:
+        - X-USER-TOKEN: []
     get:
       summary: ''
       operationId: get-file-url
@@ -1067,6 +1067,70 @@ paths:
       description: Retrieve file url
       tags:
         - client
+  /backoffice/files:
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileResponse'
+      operationId: backoffice-upload-file
+      description: 'Backoffice: Upload file'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              x-examples:
+                Example 1:
+                  file: ''
+                  uploadType: avatar
+              properties:
+                file:
+                  type: string
+                  format: binary
+                uploadType:
+                  type: string
+                  enum:
+                    - testimony
+                    - excerpt
+                    - avatar
+              required:
+                - file
+                - uploadType
+      tags:
+        - backoffice
+      security:
+        - X-USER-TOKEN: []
+    parameters: []
+  '/backoffice/files/{fileKey}':
+    parameters:
+      - schema:
+          type: string
+        name: fileKey
+        in: path
+        required: true
+    delete:
+      summary: ''
+      tags:
+        - client
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      operationId: backoffice-delete-file
+      description: Delete file
+      requestBody:
+        content: {}
+      security:
+        - X-USER-TOKEN: []
   /backoffice/events:
     get:
       summary: ''
