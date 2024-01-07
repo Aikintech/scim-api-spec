@@ -1170,22 +1170,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              type: object
-              x-examples:
-                Example 1:
-                  file: ''
-                  uploadType: avatar
-              properties:
-                file:
-                  type: string
-                  format: binary
-                uploadType:
-                  type: string
-                  enum:
-                    - avatar
-              required:
-                - file
-                - uploadType
+              $ref: '#/components/schemas/UploadFileRequest'
     parameters: []
   '/files/{fileKey}':
     parameters:
@@ -1239,24 +1224,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              type: object
-              x-examples:
-                Example 1:
-                  file: ''
-                  uploadType: avatar
-              properties:
-                file:
-                  type: string
-                  format: binary
-                uploadType:
-                  type: string
-                  enum:
-                    - testimony
-                    - excerpt
-                    - avatar
-              required:
-                - file
-                - uploadType
+              $ref: '#/components/schemas/UploadFileRequest'
       tags:
         - backoffice
       security:
@@ -3183,6 +3151,27 @@ components:
         - title
         - description
         - published
+    UploadFileRequest:
+      title: UploadFileRequest
+      x-stoplight:
+        id: 23u9petep6dge
+      type: object
+      properties:
+        file:
+          type: string
+          x-stoplight:
+            id: ex7qosimt5uge
+          format: binary
+        uploadType:
+          type: string
+          x-stoplight:
+            id: xpqsqmwaad1hc
+          enum:
+            - excerpt
+            - avatar
+      required:
+        - file
+        - uploadType
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
