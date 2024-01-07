@@ -1189,22 +1189,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                  x-stoplight:
-                    id: 2duuktvbw2jut
-                  format: binary
-                uploadType:
-                  type: string
-                  x-stoplight:
-                    id: g5vp371amt32e
-                  enum:
-                    - avatar
-              required:
-                - file
-                - uploadType
+              $ref: '#/components/schemas/UploadFileRequest'
     parameters: []
   '/files/{fileKey}':
     parameters:
@@ -1262,23 +1247,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                  x-stoplight:
-                    id: nz3hb5rj2pw10
-                  format: binary
-                uploadType:
-                  type: string
-                  x-stoplight:
-                    id: 7x9t6j5spyy4p
-                  enum:
-                    - avatar
-                    - excerpt
-              required:
-                - file
-                - uploadType
+              $ref: '#/components/schemas/UploadFileRequest'
     parameters: []
   '/backoffice/files/{fileKey}':
     parameters:
@@ -3201,6 +3170,27 @@ components:
         - title
         - description
         - published
+    UploadFileRequest:
+      title: UploadFileRequest
+      x-stoplight:
+        id: w3wg02o5k3tpy
+      type: object
+      properties:
+        file:
+          type: string
+          x-stoplight:
+            id: 4nr551jeq20q1
+          format: binary
+        uploadType:
+          type: string
+          x-stoplight:
+            id: jrxvergcmbxg5
+          enum:
+            - excerpt
+            - avatar
+      required:
+        - file
+        - uploadType
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
