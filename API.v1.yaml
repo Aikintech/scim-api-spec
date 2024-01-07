@@ -365,6 +365,17 @@ paths:
       description: 'Client: Like podcast'
       security:
         - X-USER-TOKEN: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  x-stoplight:
+                    id: 8z8owpudsq17p
+        description: ''
   '/podcasts/{podcastId}/comments':
     parameters:
       - schema:
@@ -1055,7 +1066,15 @@ paths:
         - X-USER-TOKEN: []
       requestBody:
         required: true
-        content: {}
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  x-stoplight:
+                    id: 0oeo2cejmohup
         description: ''
       tags:
         - client
