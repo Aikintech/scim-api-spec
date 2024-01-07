@@ -1273,6 +1273,7 @@ paths:
       summary: ''
       tags:
         - client
+        - backoffice
       responses:
         '200':
           description: OK
