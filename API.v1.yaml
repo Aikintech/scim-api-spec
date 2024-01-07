@@ -1033,6 +1033,32 @@ paths:
         name: testimonyId
         in: path
         required: true
+  '/testimonies/{testimonyId}/like':
+    parameters:
+      - schema:
+          type: string
+        name: testimonyId
+        in: path
+        required: true
+    patch:
+      summary: ''
+      operationId: like-testimony
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      description: Like testimony
+      security:
+        - X-USER-TOKEN: []
+      requestBody:
+        required: true
+        content: {}
+        description: ''
+      tags:
+        - client
   '/testimonies/{testimonyId}/comments':
     get:
       summary: ''
