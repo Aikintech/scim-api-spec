@@ -1,6 +1,6 @@
 openapi: 3.0.0
 x-stoplight:
-  id: zur6c0dxx3z8a
+  id: 8s6t8evko8dll
 info:
   title: API
   version: '1.0'
@@ -1283,8 +1283,6 @@ paths:
                 $ref: '#/components/schemas/MessageResponse'
       operationId: backoffice-delete-file
       description: Delete file
-      requestBody:
-        content: {}
       security:
         - X-USER-TOKEN: []
   /backoffice/events:
@@ -1760,8 +1758,11 @@ paths:
         - X-USER-TOKEN: []
       requestBody:
         required: true
-        content: {}
-      description: Back office create testimonies
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UpdateTestimonyRequest'
+      description: Back office update testimonies
     delete:
       summary: ''
       operationId: backoffice-delete-testimonies-testimony
@@ -1777,11 +1778,6 @@ paths:
       description: Delete testimony
       security:
         - X-USER-TOKEN: []
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/UpdateTestimonyRequest'
 components:
   schemas:
     AuthUser:
@@ -1804,7 +1800,7 @@ components:
         avatarKey:
           type: string
           x-stoplight:
-            id: 9euk9pvwruaul
+            id: 1mkmv9sv2hfgh
           nullable: true
         channels:
           type: array
@@ -1816,14 +1812,14 @@ components:
               - backoffice
         permissions:
           x-stoplight:
-            id: m4ny04pa14clj
+            id: rzaxczbzxie02
           type: array
           items:
             $ref: '#/components/schemas/Permission'
         social:
           type: boolean
           x-stoplight:
-            id: rym4jvde8q35f
+            id: xavynk1ll2f8r
       required:
         - id
         - firstName
@@ -1860,7 +1856,7 @@ components:
         likesCount:
           type: number
           x-stoplight:
-            id: mr8vf0hg801jl
+            id: 8vwo7gi51hy6g
       required:
         - id
         - author
@@ -1937,7 +1933,7 @@ components:
         phoneNumber:
           type: string
           x-stoplight:
-            id: ce1dysgi7to05
+            id: gu1awsles4yjh
         completedAt:
           type: string
           nullable: true
@@ -1946,7 +1942,7 @@ components:
         status:
           type: string
           x-stoplight:
-            id: 9brcin5hlkla3
+            id: ie08hko3nnpwm
           enum:
             - fulfilled
             - pending
@@ -1978,7 +1974,7 @@ components:
         excerptImageKey:
           type: string
           x-stoplight:
-            id: z40x1i8k5d5q4
+            id: 3fo9n88rkjrm3
         location:
           type: string
         startDateTime:
@@ -1992,7 +1988,7 @@ components:
         users:
           type: array
           x-stoplight:
-            id: 3b4qrixcfrrvz
+            id: snz282hynunea
           items:
             $ref: '#/components/schemas/UserRel'
       required:
@@ -2089,25 +2085,25 @@ components:
     CommentRequest:
       title: CommentRequest
       x-stoplight:
-        id: ot54uyydj0o5x
+        id: lqurqy1c4sb3x
       type: object
       properties:
         comment:
           type: string
           x-stoplight:
-            id: s7t58bujmz14n
+            id: l8744aq6xjj4r
       required:
         - comment
     MessageResponse:
       title: MessageResponse
       x-stoplight:
-        id: gmf8yx586fcto
+        id: n42yvfm4e2bh8
       type: object
       properties:
         message:
           type: string
           x-stoplight:
-            id: 5qg0odxm3vfca
+            id: 1pa4obx2pq7ww
       required:
         - message
     GetPodcastsResponse:
@@ -2169,7 +2165,7 @@ components:
     PlaylistsResponse:
       type: array
       x-stoplight:
-        id: b4m86sg966ryt
+        id: uvmn6kii3kzwu
       x-examples: {}
       items:
         $ref: '#/components/schemas/Playlist'
@@ -2180,15 +2176,15 @@ components:
         limit:
           type: integer
           x-stoplight:
-            id: ufvohk2yj0hsx
+            id: yf9u127fifpov
         page:
           type: integer
           x-stoplight:
-            id: ufvohk2yj0hsx
+            id: n1j6wegikmh6j
         total:
           type: integer
           x-stoplight:
-            id: ufvohk2yj0hsx
+            id: 3jadk3tsqfqi2
         items:
           type: array
           items:
@@ -2201,7 +2197,7 @@ components:
     CommentsResponse:
       type: array
       x-stoplight:
-        id: f043d02f509bc
+        id: mxval4ip7btme
       x-examples:
         Example 1:
           - id: 01HGTH4JBT0KMPYW4KD505SAS0
@@ -2221,13 +2217,13 @@ components:
     EmailRequest:
       title: EmailRequest
       x-stoplight:
-        id: 5fu8dtlpj6ocv
+        id: 75b8qmoc4ha7d
       type: object
       properties:
         email:
           type: string
           x-stoplight:
-            id: 5awcv9b192ctu
+            id: imkkp0r2uqe32
       required:
         - email
     StorePlaylistRequest:
@@ -2262,15 +2258,15 @@ components:
         phoneNumber:
           type: string
           x-stoplight:
-            id: itjqecfffw1l6
+            id: uf50l62041g8t
         countryCode:
           type: string
           x-stoplight:
-            id: orgxyeb8y3gb1
+            id: 9y2ll7fb6nymr
         status:
           type: string
           x-stoplight:
-            id: lzbytsmh7v0ds
+            id: bei5kgba1jwyh
           enum:
             - fulfilled
             - pending
@@ -2335,7 +2331,7 @@ components:
     EventsResponse:
       type: object
       x-stoplight:
-        id: 09td3cquu09hj
+        id: 7cvfdu7xd63c7
       x-examples:
         Example 1:
           items:
@@ -2408,7 +2404,7 @@ components:
         published:
           type: boolean
           x-stoplight:
-            id: on2oxt69hgfkk
+            id: og1w50tskj4fw
         startDateTime:
           type: string
         endDateTime:
@@ -2463,7 +2459,7 @@ components:
         excerptImageKey:
           type: string
           x-stoplight:
-            id: ox8a8hxeu6lb2
+            id: su9imett3qnr4
         isAnnouncement:
           type: boolean
         minutesToRead:
@@ -2595,11 +2591,11 @@ components:
         excerptImage:
           type: string
           x-stoplight:
-            id: hyjedg14jniru
+            id: l574wg0m3yzk3
         isAnnouncement:
           type: boolean
           x-stoplight:
-            id: f2rpl2seaubc6
+            id: vr1nn3gwp2e50
       required:
         - title
         - body
@@ -2609,7 +2605,7 @@ components:
     VerifyEmailRequest:
       type: object
       x-stoplight:
-        id: 9cad4275294e8
+        id: lu5q5lpd7ydaf
       x-examples:
         Example 1:
           email: nanaaikinson2020@gmail.com
@@ -2623,7 +2619,7 @@ components:
         action:
           type: string
           x-stoplight:
-            id: isqojezx3vnyd
+            id: rj828kw5t6ihu
           enum:
             - reset_password
             - account_verification
@@ -2684,59 +2680,59 @@ components:
     VerifyCodeResponse:
       title: VerifyCodeResponse
       x-stoplight:
-        id: kvt06uja7e5wn
+        id: 2mjlybl1cnwka
       type: object
       properties:
         message:
           type: string
           x-stoplight:
-            id: kqanhtlwe8snp
+            id: 3cxly7isbzb04
         key:
           type: string
           x-stoplight:
-            id: tf7fbsuvckavu
+            id: h9ag4shgjmsox
       required:
         - message
         - key
     VerifyAccountRequest:
       title: VerifyAccountRequest
       x-stoplight:
-        id: pwzgpv6ggr130
+        id: 3hic8mizrgsjg
       type: object
       properties:
         key:
           type: string
           x-stoplight:
-            id: 15j5s2pa7t9vp
+            id: edang5dn0exam
         email:
           type: string
           x-stoplight:
-            id: uf5tda0wt9fgv
+            id: h68egc5nrixgs
       required:
         - key
         - email
     ResetPasswordRequest:
       title: ResetPasswordRequest
       x-stoplight:
-        id: djnanx7qhejqs
+        id: 1tvdeuvr0r2i6
       type: object
       properties:
         key:
           type: string
           x-stoplight:
-            id: nrfoxetniboyf
+            id: tw6ebscdm6b2k
         email:
           type: string
           x-stoplight:
-            id: 10xsjngek7tjp
+            id: fqt265hkzz4k4
         password:
           type: string
           x-stoplight:
-            id: maq0kigyjsjst
+            id: ua9kseoao6z01
         passwordConfirmation:
           type: string
           x-stoplight:
-            id: yry1vj7b79wqs
+            id: rncf8up2d0y5m
       required:
         - key
         - email
@@ -2745,24 +2741,24 @@ components:
     SocialAuthRequest:
       title: SocialAuthRequest
       x-stoplight:
-        id: zvouocf5u1t2p
+        id: kmmrq8ry5xg9v
       type: object
       properties:
         token:
           type: string
           x-stoplight:
-            id: b58i2mzuzpeu1
+            id: w3y1mplfoyq6a
         channel:
           type: string
           x-stoplight:
-            id: 63644o4pyzxf0
+            id: y81xwock4l5j9
           enum:
             - web
             - mobile
         provider:
           type: string
           x-stoplight:
-            id: gx48sdedd0ech
+            id: 9qys2e7mhoxsi
           enum:
             - apple
             - google
@@ -2773,7 +2769,7 @@ components:
     Transaction:
       title: Transaction
       x-stoplight:
-        id: g4t8s9n7hud6p
+        id: 29nmlfyzvgbpz
       type: object
       properties:
         id:
@@ -2781,19 +2777,19 @@ components:
         provider:
           type: string
           x-stoplight:
-            id: e3gelmgwr9yyt
+            id: tk17lxu8f0438
         currency:
           type: string
           x-stoplight:
-            id: 6ewfky0ndjqsc
+            id: zsg0qbn5xovv4
         amount:
           type: number
           x-stoplight:
-            id: qxvjia8zzjif5
+            id: 80ihjw460o4fn
         type:
           type: string
           x-stoplight:
-            id: 0f5gzeqimh8sy
+            id: 94yxabhy9fv7w
           enum:
             - tithe
             - pledge
@@ -2805,7 +2801,7 @@ components:
         channel:
           type: string
           x-stoplight:
-            id: y9bgb4hn1twf3
+            id: 9sotmpqk723gq
           enum:
             - card
             - bank
@@ -2813,7 +2809,7 @@ components:
         status:
           type: string
           x-stoplight:
-            id: uvsaaa25jki7k
+            id: zp4k7l0qp2a30
           enum:
             - pending
             - success
@@ -2822,11 +2818,11 @@ components:
         description:
           type: string
           x-stoplight:
-            id: 1dflwdat94ahl
+            id: 90u9c87mj4bg8
         createdAt:
           type: string
           x-stoplight:
-            id: tme5bdxe93exs
+            id: kthqfsazwi6f2
         user:
           $ref: '#/components/schemas/UserRel'
       required:
@@ -2843,27 +2839,27 @@ components:
     TransactionsResponse:
       title: TransactionsResponse
       x-stoplight:
-        id: b475o308472xr
+        id: 3jgpt6h77dld5
       type: object
       properties:
         items:
           type: array
           x-stoplight:
-            id: tklh7k1043gan
+            id: 6fzp1uqi6toy6
           items:
             $ref: '#/components/schemas/Transaction'
         limit:
           type: integer
           x-stoplight:
-            id: r7o5xl505pdmf
+            id: ef8a6ef08r24x
         page:
           type: integer
           x-stoplight:
-            id: qq8coyia6816s
+            id: zqjwdowjz77l3
         total:
           type: integer
           x-stoplight:
-            id: qb49l8yadya80
+            id: jcxo1onijt3hd
       required:
         - items
         - limit
@@ -2872,21 +2868,21 @@ components:
     TransactRequest:
       title: TransactRequest
       x-stoplight:
-        id: fdetuxrcymcca
+        id: dtlritetmkpv8
       type: object
       properties:
         idempotencyKey:
           type: string
           x-stoplight:
-            id: m5ixbm809pxeu
+            id: suc9shtctyb18
         amount:
           type: integer
           x-stoplight:
-            id: cmav01bdegwvk
+            id: abv0uiivosl2r
         type:
           type: string
           x-stoplight:
-            id: zdbdcc6z6evae
+            id: elnu7rtwp4n2b
           enum:
             - tithe
             - pledge
@@ -2897,7 +2893,7 @@ components:
         currency:
           type: string
           x-stoplight:
-            id: txld7y7utqozc
+            id: 715bpa1h4qmns
           enum:
             - USD
             - GHS
@@ -2906,14 +2902,14 @@ components:
         channel:
           type: string
           x-stoplight:
-            id: 85co46fj603ay
+            id: fum69gqurq2oi
           enum:
             - mobile_money
             - card
         description:
           type: string
           x-stoplight:
-            id: nno9uf7mtf8op
+            id: 5ekrr2ug1k5kk
       required:
         - idempotencyKey
         - amount
@@ -2923,29 +2919,29 @@ components:
     UserRel:
       title: UserRel
       x-stoplight:
-        id: 119vawpz0g896
+        id: 7c24904w8l030
       type: object
       properties:
         id:
           type: string
           x-stoplight:
-            id: yw5xe1ehzhqte
+            id: xstkvmyu14a8m
         firstName:
           type: string
           x-stoplight:
-            id: sp8wdbteduk5d
+            id: bz5u89y6lzde6
         lastName:
           type: string
           x-stoplight:
-            id: sp8wdbteduk5d
+            id: xr6yz3xr5zhdr
         email:
           type: string
           x-stoplight:
-            id: sp8wdbteduk5d
+            id: zeog6atm6vfts
         avatar:
           type: string
           x-stoplight:
-            id: sp8wdbteduk5d
+            id: 2o8frc5j3jfty
       required:
         - id
         - firstName
@@ -2969,7 +2965,7 @@ components:
     BackofficeUsersResponse:
       type: object
       x-stoplight:
-        id: 01c0b53486443
+        id: qul3gnu427my9
       x-examples: {}
       properties:
         items:
@@ -3013,11 +3009,11 @@ components:
         createdAt:
           type: string
           x-stoplight:
-            id: kg0syalmfa3ky
+            id: 69lghj78xvmq6
         social:
           type: boolean
           x-stoplight:
-            id: 0umn5ns6kfsbg
+            id: y7j69ljh8cppn
       required:
         - id
         - firstName
@@ -3032,7 +3028,7 @@ components:
     BackofficeUserFull:
       type: object
       x-stoplight:
-        id: 7pkrwx2qy1djv
+        id: 3fe3jk24la60x
       x-examples: {}
       properties:
         id:
@@ -3056,11 +3052,11 @@ components:
         createdAt:
           type: string
           x-stoplight:
-            id: kg0syalmfa3ky
+            id: ld65y8dihupsy
         social:
           type: boolean
           x-stoplight:
-            id: 0umn5ns6kfsbg
+            id: x3hag11nv3n95
       required:
         - id
         - firstName
@@ -3075,7 +3071,7 @@ components:
     MyCalendarEventsResponse:
       title: MyCalendarEventsResponse
       x-stoplight:
-        id: lc70349ssv1nz
+        id: tuj9vb7rh0bby
       type: array
       items:
         $ref: '#/components/schemas/Event'
@@ -3094,7 +3090,7 @@ components:
         description:
           type: string
           x-stoplight:
-            id: 5aaw2jke8vj9z
+            id: 2vbtomhjjw5c1
         published:
           type: boolean
         createAt:
@@ -3135,25 +3131,25 @@ components:
     StoreTestimonyRequest:
       title: StoreTestimonyRequest
       x-stoplight:
-        id: n6581vvrvz9hq
+        id: 7zdq2x65z3nak
       type: object
       properties:
         title:
           type: string
           x-stoplight:
-            id: ugruiijs0lu27
+            id: aup0u3jjii58t
         description:
           type: string
           x-stoplight:
-            id: kexfim71pk30y
+            id: zk3uabuujco1y
         published:
           type: boolean
           x-stoplight:
-            id: p7wqk57y6ruui
+            id: wnutl5hb3f5gf
         file:
           type: string
           x-stoplight:
-            id: 3ep2te01t77fx
+            id: woc74an1tpoer
           format: binary
       required:
         - title
@@ -3163,25 +3159,25 @@ components:
     UpdateTestimonyRequest:
       title: UpdateTestimonyRequest
       x-stoplight:
-        id: r41t47n8schb0
+        id: 6ltp2l9fhcns9
       type: object
       properties:
         title:
           type: string
           x-stoplight:
-            id: ugruiijs0lu27
+            id: 5wd9k06eesm1z
         description:
           type: string
           x-stoplight:
-            id: kexfim71pk30y
+            id: fjzrcla23x4ua
         published:
           type: boolean
           x-stoplight:
-            id: p7wqk57y6ruui
+            id: 6fxlluqy91n5i
         file:
           type: string
           x-stoplight:
-            id: 3ep2te01t77fx
+            id: xv65kvbiximd8
           format: binary
       required:
         - title
