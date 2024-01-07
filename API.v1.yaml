@@ -1168,9 +1168,24 @@ paths:
       requestBody:
         required: true
         content:
-          multipart/form-data:
+          application/json:
             schema:
-              $ref: '#/components/schemas/UploadFileRequest'
+              type: object
+              properties:
+                file:
+                  type: string
+                  x-stoplight:
+                    id: 2duuktvbw2jut
+                  format: binary
+                uploadType:
+                  type: string
+                  x-stoplight:
+                    id: g5vp371amt32e
+                  enum:
+                    - avatar
+              required:
+                - file
+                - uploadType
     parameters: []
   '/files/{fileKey}':
     parameters:
@@ -1219,16 +1234,32 @@ paths:
                 $ref: '#/components/schemas/FileResponse'
       operationId: backoffice-upload-file
       description: 'Backoffice: Upload file'
+      tags:
+        - backoffice
+      security:
+        - X-USER-TOKEN: []
       requestBody:
         required: true
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/UploadFileRequest'
-      tags:
-        - backoffice
-      security:
-        - X-USER-TOKEN: []
+              type: object
+              properties:
+                file:
+                  type: string
+                  x-stoplight:
+                    id: nz3hb5rj2pw10
+                  format: binary
+                uploadType:
+                  type: string
+                  x-stoplight:
+                    id: 7x9t6j5spyy4p
+                  enum:
+                    - avatar
+                    - excerpt
+              required:
+                - file
+                - uploadType
     parameters: []
   '/backoffice/files/{fileKey}':
     parameters:
@@ -3151,27 +3182,6 @@ components:
         - title
         - description
         - published
-    UploadFileRequest:
-      title: UploadFileRequest
-      x-stoplight:
-        id: 23u9petep6dge
-      type: object
-      properties:
-        file:
-          type: string
-          x-stoplight:
-            id: ex7qosimt5uge
-          format: binary
-        uploadType:
-          type: string
-          x-stoplight:
-            id: xpqsqmwaad1hc
-          enum:
-            - excerpt
-            - avatar
-      required:
-        - file
-        - uploadType
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
