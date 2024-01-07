@@ -996,6 +996,135 @@ paths:
         name: transactionId
         in: path
         required: true
+  /testimonies:
+    get:
+      summary: ''
+      tags:
+        - client
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestimoniesResponse'
+      operationId: get-testimonies
+      description: Get testimonies
+      parameters: []
+    parameters: []
+  '/testimonies/{testimonyId}':
+    get:
+      summary: ''
+      tags:
+        - client
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Testimony'
+      operationId: get-testimony
+      description: Get testimony
+      parameters: []
+    parameters:
+      - schema:
+          type: string
+        name: testimonyId
+        in: path
+        required: true
+  '/testimonies/{testimonyId}/comments':
+    get:
+      summary: ''
+      tags:
+        - client
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentsResponse'
+      operationId: get-testimony-comments
+      description: Get testimony comments
+      parameters: []
+    parameters:
+      - schema:
+          type: string
+        name: testimonyId
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: create-testimony-comment
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+      description: Create testimony comment
+      security:
+        - X-USER-TOKEN: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentRequest'
+      tags:
+        - client
+  '/testimonies/{testimonyId}/comments/{commentId}':
+    delete:
+      summary: ''
+      tags:
+        - client
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          description: Not Found
+      operationId: delete-testimony-comment
+      description: Delete testimony comment
+      security:
+        - X-USER-TOKEN: []
+    parameters:
+      - schema:
+          type: string
+        name: commentId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: testimonyId
+        in: path
+        required: true
+    patch:
+      summary: ''
+      operationId: update-testimony-comment
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+      description: Update testimony comment
+      security:
+        - X-USER-TOKEN: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentRequest'
+        description: ''
+      tags:
+        - client
   /files:
     post:
       summary: ''
@@ -1514,6 +1643,118 @@ paths:
       tags:
         - backoffice
     parameters: []
+  /backoffice/testimonies:
+    get:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestimoniesResponse'
+      operationId: backoffice-get-testimonies
+      description: Get testimonies
+      security:
+        - X-USER-TOKEN: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: page
+        - schema:
+            type: integer
+          in: query
+          name: limit
+        - schema:
+            type: string
+          in: query
+          name: search
+      tags:
+        - backoffice
+    parameters: []
+    post:
+      summary: ''
+      operationId: backoffice-create-testimony
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      tags:
+        - backoffice
+      security:
+        - X-USER-TOKEN: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StoreTestimonyRequest'
+      description: Back office create testimonies
+  '/backoffice/testimonies/{testimonyId}':
+    get:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Testimony'
+      operationId: backoffice-get-testimony
+      description: Get testimony
+      security:
+        - X-USER-TOKEN: []
+      parameters: []
+      tags:
+        - backoffice
+    parameters:
+      - schema:
+          type: string
+        name: testimonyId
+        in: path
+        required: true
+    patch:
+      summary: ''
+      operationId: backoffice-update-testimony
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Testimony'
+      tags:
+        - backoffice
+      security:
+        - X-USER-TOKEN: []
+      requestBody:
+        required: true
+        content: {}
+      description: Back office create testimonies
+    delete:
+      summary: ''
+      operationId: backoffice-delete-testimonies-testimony
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      tags:
+        - backoffice
+      description: Delete testimony
+      security:
+        - X-USER-TOKEN: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UpdateTestimonyRequest'
 components:
   schemas:
     AuthUser:
@@ -2811,6 +3052,114 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Event'
+    Testimony:
+      type: object
+      x-examples: {}
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        fileUrl:
+          type: string
+        fileKey:
+          type: string
+        description:
+          type: string
+          x-stoplight:
+            id: 5aaw2jke8vj9z
+        published:
+          type: boolean
+        createAt:
+          type: string
+        commentsCount:
+          type: integer
+        likesCount:
+          type: integer
+      required:
+        - id
+        - title
+        - fileUrl
+        - fileKey
+        - description
+        - published
+        - createAt
+        - commentsCount
+        - likesCount
+    TestimoniesResponse:
+      type: object
+      x-examples: {}
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Testimony'
+        limit:
+          type: integer
+        page:
+          type: integer
+        total:
+          type: integer
+      required:
+        - items
+        - limit
+        - page
+        - total
+    StoreTestimonyRequest:
+      title: StoreTestimonyRequest
+      x-stoplight:
+        id: n6581vvrvz9hq
+      type: object
+      properties:
+        title:
+          type: string
+          x-stoplight:
+            id: ugruiijs0lu27
+        description:
+          type: string
+          x-stoplight:
+            id: kexfim71pk30y
+        published:
+          type: boolean
+          x-stoplight:
+            id: p7wqk57y6ruui
+        file:
+          type: string
+          x-stoplight:
+            id: 3ep2te01t77fx
+          format: binary
+      required:
+        - title
+        - description
+        - published
+        - file
+    UpdateTestimonyRequest:
+      title: UpdateTestimonyRequest
+      x-stoplight:
+        id: r41t47n8schb0
+      type: object
+      properties:
+        title:
+          type: string
+          x-stoplight:
+            id: ugruiijs0lu27
+        description:
+          type: string
+          x-stoplight:
+            id: kexfim71pk30y
+        published:
+          type: boolean
+          x-stoplight:
+            id: p7wqk57y6ruui
+        file:
+          type: string
+          x-stoplight:
+            id: 3ep2te01t77fx
+          format: binary
+      required:
+        - title
+        - description
+        - published
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
