@@ -1748,7 +1748,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/UpdateTestimonyRequest'
+              $ref: '#/components/schemas/StoreTestimonyRequest'
       description: Back office update testimonies
     delete:
       summary: ''
@@ -3129,6 +3129,10 @@ components:
           type: string
           x-stoplight:
             id: zk3uabuujco1y
+        deviceFingerprint:
+          type: string
+          x-stoplight:
+            id: zk3uabuujco1y
         published:
           type: boolean
           x-stoplight:
@@ -3141,34 +3145,7 @@ components:
       required:
         - title
         - description
-        - published
-        - file
-    UpdateTestimonyRequest:
-      title: UpdateTestimonyRequest
-      x-stoplight:
-        id: 6ltp2l9fhcns9
-      type: object
-      properties:
-        title:
-          type: string
-          x-stoplight:
-            id: 5wd9k06eesm1z
-        description:
-          type: string
-          x-stoplight:
-            id: fjzrcla23x4ua
-        published:
-          type: boolean
-          x-stoplight:
-            id: 6fxlluqy91n5i
-        file:
-          type: string
-          x-stoplight:
-            id: xv65kvbiximd8
-          format: binary
-      required:
-        - title
-        - description
+        - deviceFingerprint
         - published
     UploadFileRequest:
       title: UploadFileRequest
