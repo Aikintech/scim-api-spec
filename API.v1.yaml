@@ -1752,7 +1752,7 @@ paths:
       description: Back office update testimonies
     delete:
       summary: ''
-      operationId: backoffice-delete-testimonies-testimony
+      operationId: backoffice-delete-testimony
       responses:
         '200':
           description: OK
