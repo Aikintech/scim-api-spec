@@ -29,12 +29,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoginResponse'
-        '307':
-          description: Redirect if account not verified
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MessageResponse'
       operationId: auth-login
       requestBody:
         required: true
@@ -2098,6 +2092,10 @@ components:
           type: string
           x-stoplight:
             id: 1pa4obx2pq7ww
+        action:
+          type: string
+          x-stoplight:
+            id: wjwh9t4eh6g96
       required:
         - message
     GetPodcastsResponse:
