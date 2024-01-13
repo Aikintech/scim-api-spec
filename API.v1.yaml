@@ -29,6 +29,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoginResponse'
+        '307':
+          description: Redirect if account not verified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
       operationId: auth-login
       requestBody:
         required: true
@@ -36,6 +42,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/LoginRequest'
+        description: ''
       description: Auth login
   /auth/social:
     post:
