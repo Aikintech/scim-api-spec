@@ -265,6 +265,30 @@ paths:
       security:
         - X-USER-TOKEN: []
     parameters: []
+  /auth/delete-account:
+    delete:
+      summary: ''
+      tags:
+        - client
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      operationId: auth-delete-account
+      description: 'Auth: Delete account'
+      security:
+        - X-USER-TOKEN: []
+      parameters:
+        - schema:
+            type: string
+            format: email
+          in: query
+          name: email
+          required: true
+    parameters: []
   /podcasts:
     get:
       summary: ''
