@@ -1763,7 +1763,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Testimony'
+                $ref: '#/components/schemas/MessageResponse'
       tags:
         - backoffice
       security:
@@ -1774,6 +1774,7 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/StoreTestimonyRequest'
+        description: ''
       description: Back office update testimonies
     delete:
       summary: ''
