@@ -337,14 +337,7 @@ paths:
                 $ref: '#/components/schemas/GetPodcastsResponse'
       operationId: get-all-podcasts
       description: 'Client: Get all podcasts'
-      parameters:
-        - schema:
-            type: string
-            enum:
-              - newest
-              - oldest
-          in: query
-          name: sort
+      parameters: []
     parameters: []
   '/podcasts/{podcastId}':
     parameters:
@@ -1874,7 +1867,6 @@ components:
         - id
         - author
         - title
-        - description
         - duration
         - imageUrl
         - audioUrl
