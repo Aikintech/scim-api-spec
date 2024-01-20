@@ -1941,7 +1941,6 @@ components:
             id: gu1awsles4yjh
         completedAt:
           type: string
-          nullable: true
         createdAt:
           type: string
         status:
