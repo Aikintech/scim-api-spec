@@ -1701,6 +1701,36 @@ paths:
       tags:
         - backoffice
     parameters: []
+  /backoffice/roles:
+    get:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RolesResponse'
+      operationId: backoffice-get-roles
+      description: Get roles
+      security:
+        - X-USER-TOKEN: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: page
+        - schema:
+            type: integer
+          in: query
+          name: limit
+        - schema:
+            type: string
+          in: query
+          name: search
+      tags:
+        - backoffice
+    parameters: []
   /backoffice/testimonies:
     get:
       summary: ''
@@ -3234,6 +3264,89 @@ components:
             - closed
       required:
         - status
+    Role:
+      type: object
+      x-examples: {}
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        createdAt:
+          type: string
+        usersCount:
+          type: integer
+          x-stoplight:
+            id: w7fqcaho5p3lb
+      required:
+        - id
+        - name
+        - displayName
+        - description
+        - createdAt
+        - usersCount
+    RoleWithPermissions:
+      type: object
+      x-examples: {}
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        createdAt:
+          type: string
+        usersCount:
+          type: integer
+          x-stoplight:
+            id: mu0pulxhzjvqp
+        permissions:
+          type: array
+          x-stoplight:
+            id: 5mx5mexv156bt
+          items:
+            $ref: '#/components/schemas/Permission'
+      required:
+        - id
+        - name
+        - displayName
+        - description
+        - createdAt
+        - usersCount
+        - permissions
+    RolesResponse:
+      type: object
+      x-examples: {}
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+        limit:
+          type: integer
+        page:
+          type: integer
+        total:
+          type: integer
+      required:
+        - items
+        - limit
+        - page
+        - total
+    PermissionsResponse:
+      title: PermissionsResponse
+      x-stoplight:
+        id: y03q64ftlvc6o
+      type: array
+      items:
+        $ref: '#/components/schemas/Permission'
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
