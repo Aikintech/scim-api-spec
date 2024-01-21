@@ -3282,6 +3282,10 @@ components:
           type: integer
           x-stoplight:
             id: w7fqcaho5p3lb
+        system:
+          type: boolean
+          x-stoplight:
+            id: 454gvtwx79n2w
       required:
         - id
         - name
@@ -3289,6 +3293,7 @@ components:
         - description
         - createdAt
         - usersCount
+        - system
     RoleWithPermissions:
       type: object
       x-examples: {}
@@ -3313,6 +3318,10 @@ components:
             id: 5mx5mexv156bt
           items:
             $ref: '#/components/schemas/Permission'
+        system:
+          type: boolean
+          x-stoplight:
+            id: etmt9oxsrtrcu
       required:
         - id
         - name
@@ -3321,6 +3330,7 @@ components:
         - createdAt
         - usersCount
         - permissions
+        - system
     RolesResponse:
       type: object
       x-examples: {}
