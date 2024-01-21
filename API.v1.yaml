@@ -684,6 +684,34 @@ paths:
               $ref: '#/components/schemas/PrayerRequest'
       tags:
         - client
+  '/prayer-requests/{prayerId}':
+    patch:
+      summary: ''
+      tags:
+        - client
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prayer'
+      operationId: update-prayer-request-status
+      security:
+        - X-USER-TOKEN: []
+      parameters: []
+      description: 'Client: Update my prayer status'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePrayerStatus'
+    parameters:
+      - schema:
+          type: string
+        name: prayerId
+        in: path
+        required: true
   /posts:
     get:
       summary: ''
@@ -3191,6 +3219,21 @@ components:
       required:
         - file
         - uploadType
+    UpdatePrayerStatus:
+      title: UpdatePrayerStatus
+      x-stoplight:
+        id: rbckop6lljroy
+      type: object
+      properties:
+        status:
+          type: string
+          x-stoplight:
+            id: irsoihdmpenao
+          enum:
+            - fulfilled
+            - closed
+      required:
+        - status
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
