@@ -1731,6 +1731,24 @@ paths:
       tags:
         - backoffice
     parameters: []
+  /backoffice/permissions:
+    get:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionsResponse'
+      operationId: backoffice-get-permissions
+      description: Get permissions
+      security:
+        - X-USER-TOKEN: []
+      parameters: []
+      tags:
+        - backoffice
+    parameters: []
   /backoffice/testimonies:
     get:
       summary: ''
