@@ -334,7 +334,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetPodcastsResponse'
+                $ref: '#/components/schemas/GetAllPodcastsResponse'
       operationId: get-all-podcasts
       description: 'Client: Get all podcasts'
       parameters: []
@@ -3375,6 +3375,13 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Permission'
+    GetAllPodcastsResponse:
+      title: GetAllPodcastsResponse
+      x-stoplight:
+        id: dcsil38okurra
+      type: array
+      items:
+        $ref: '#/components/schemas/Podcast'
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
