@@ -1796,6 +1796,21 @@ paths:
               $ref: '#/components/schemas/StoreRoleRequest'
       tags:
         - backoffice
+    delete:
+      summary: ''
+      operationId: backoffice-delete-role
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      description: Delete role
+      security:
+        - X-USER-TOKEN: []
+      tags:
+        - backoffice
   /backoffice/permissions:
     get:
       summary: ''
