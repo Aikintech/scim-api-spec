@@ -1745,6 +1745,7 @@ paths:
       security:
         - X-USER-TOKEN: []
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -1788,6 +1789,7 @@ paths:
       security:
         - X-USER-TOKEN: []
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -3455,7 +3457,7 @@ components:
           type: string
           x-stoplight:
             id: lrtrn55sbh1if
-        desdription:
+        description:
           type: string
           x-stoplight:
             id: kuskf5yalxwyr
@@ -3469,7 +3471,7 @@ components:
             type: string
       required:
         - name
-        - desdription
+        - description
         - permissions
   securitySchemes:
     X-USER-TOKEN:
