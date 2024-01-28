@@ -1731,6 +1731,69 @@ paths:
       tags:
         - backoffice
     parameters: []
+    post:
+      summary: ''
+      operationId: backoffice-create-role
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+      description: Create role
+      security:
+        - X-USER-TOKEN: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreRoleRequest'
+      tags:
+        - backoffice
+  '/backoffice/roles/{roleId}':
+    get:
+      summary: ''
+      operationId: backoffice-get-role
+      description: Get role
+      security:
+        - X-USER-TOKEN: []
+      parameters: []
+      tags:
+        - backoffice
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleWithPermissions'
+    parameters:
+      - schema:
+          type: string
+        name: roleId
+        in: path
+        required: true
+    patch:
+      summary: ''
+      operationId: backoffice-update-role
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleWithPermissions'
+      description: update role
+      security:
+        - X-USER-TOKEN: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreRoleRequest'
+      tags:
+        - backoffice
   /backoffice/permissions:
     get:
       summary: ''
@@ -3382,6 +3445,32 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Podcast'
+    StoreRoleRequest:
+      title: StoreRoleRequest
+      x-stoplight:
+        id: w9jnyyftn3kwi
+      type: object
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: lrtrn55sbh1if
+        desdription:
+          type: string
+          x-stoplight:
+            id: kuskf5yalxwyr
+        permissions:
+          type: array
+          x-stoplight:
+            id: z38ki7ya5hg3x
+          items:
+            x-stoplight:
+              id: usaea22z389jl
+            type: string
+      required:
+        - name
+        - desdription
+        - permissions
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
