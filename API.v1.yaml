@@ -10,9 +10,11 @@ info:
     email: nanaaikinson24@gmail.com
 servers:
   - url: 'https://api.scimapp.org'
-    description: ''
+    description: production
   - url: 'https://staging-api.scimapp.org'
-    description: ''
+    description: staging
+  - url: 'http://127.0.0.1:9000'
+    description: local
 tags:
   - name: backoffice
   - name: client
