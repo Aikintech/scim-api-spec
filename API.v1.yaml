@@ -2137,6 +2137,14 @@ components:
             id: 3fo9n88rkjrm3
         location:
           type: string
+        latitude:
+          type: string
+          x-stoplight:
+            id: cgjgrxxpi5igf
+        longitude:
+          type: string
+          x-stoplight:
+            id: cgjgrxxpi5igf
         startDateTime:
           type: string
         endDateTime:
@@ -2158,6 +2166,8 @@ components:
         - excerptImage
         - excerptImageKey
         - location
+        - latitude
+        - longitude
         - startDateTime
         - endDateTime
         - published
@@ -2565,6 +2575,14 @@ components:
           type: string
         location:
           type: string
+        latitude:
+          type: string
+          x-stoplight:
+            id: okkn0j1lux7ya
+        longitude:
+          type: string
+          x-stoplight:
+            id: wtbsa79xt6lte
         published:
           type: boolean
           x-stoplight:
