@@ -780,6 +780,41 @@ paths:
         name: postId
         in: path
         required: true
+  '/posts/{postId}/like':
+    parameters:
+      - schema:
+          type: string
+        name: postId
+        in: path
+        required: true
+    patch:
+      summary: ''
+      tags:
+        - client
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '401':
+          description: Unauthorized
+      operationId: like-post
+      description: 'Client: Like post'
+      security:
+        - X-USER-TOKEN: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  x-stoplight:
+                    id: 8z8owpudsq17p
+        description: ''
   '/posts/{postId}/comments':
     get:
       summary: ''
