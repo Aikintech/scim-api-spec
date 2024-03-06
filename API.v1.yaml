@@ -3129,12 +3129,20 @@ components:
           type: string
           x-stoplight:
             id: 5ekrr2ug1k5kk
+        requestChannel:
+          type: string
+          x-stoplight:
+            id: zwstugd82clhf
+          enum:
+            - web
+            - mobile
       required:
         - idempotencyKey
         - amount
         - type
         - currency
         - channel
+        - requestChannel
     UserRel:
       title: UserRel
       x-stoplight:
