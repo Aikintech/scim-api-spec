@@ -187,6 +187,59 @@ paths:
               $ref: '#/components/schemas/VerifyEmailRequest'
       description: Auth verify code
     parameters: []
+  /auth/register-device:
+    post:
+      summary: ''
+      tags:
+        - client
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deviceId:
+                    type: string
+                    x-stoplight:
+                      id: sekxl3zjsi8h7
+                required:
+                  - deviceId
+      operationId: auth-register-device
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterDeviceRequest'
+      description: Auth register device
+    parameters: []
+  '/auth/update-device/{deviceId}':
+    patch:
+      summary: ''
+      tags:
+        - client
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      operationId: auth-update-device
+      requestBody:
+        required: true
+        content: {}
+      description: Auth update device
+      security:
+        - X-USER-TOKEN: []
+    parameters:
+      - schema:
+          type: string
+        name: deviceId
+        in: path
+        required: true
   /auth/update-user-avatar:
     patch:
       summary: ''
@@ -3567,6 +3620,32 @@ components:
         - name
         - description
         - permissions
+    RegisterDeviceRequest:
+      title: RegisterDeviceRequest
+      x-stoplight:
+        id: tri9aq4sdra9s
+      type: object
+      properties:
+        deviceOs:
+          type: string
+          x-stoplight:
+            id: v46255hapcu4g
+        deviceType:
+          type: string
+          x-stoplight:
+            id: wf45vlq4ylax1
+          enum:
+            - desktop
+            - mobile
+            - tablet
+        fcmToken:
+          type: string
+          x-stoplight:
+            id: uo23vz5z81rtr
+      required:
+        - deviceOs
+        - deviceType
+        - fcmToken
   securitySchemes:
     X-USER-TOKEN:
       type: apiKey
